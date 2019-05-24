@@ -21,9 +21,12 @@ public class SmartPhone {
 
     @Inject
     public SmartPhone(Battery battery, MemoryCard memoryCard, SIMCard simCard) {
+        // here the instance came along with dagger
         this.battery = battery;
         this.memoryCard = memoryCard;
         this.simCard = simCard;
+        // here we can call the method inside the instance battery
+        battery.showType();
     }
 
     public void makeACall () {
