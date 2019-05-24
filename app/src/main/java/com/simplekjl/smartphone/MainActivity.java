@@ -1,20 +1,21 @@
 package com.simplekjl.smartphone;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.simplekjl.smartphone.di.DaggerSmartPhoneComponent;
 import com.simplekjl.smartphone.di.SmartPhoneComponent;
 
+import javax.inject.Inject;
+
 /**
- * how to provide a interface class as a dependency?
- *
- * Let's change our class battery to an interface to demonstrate this example
- *
+ * Using field injection below
  */
 
 public class MainActivity extends AppCompatActivity {
 
+    // we add the annotation to the field
+    @Inject
     SmartPhone smartPhone;
 
     @Override
@@ -22,10 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         SmartPhoneComponent smartPhoneComponent = DaggerSmartPhoneComponent.create();
 
-        smartPhoneComponent.getSmartPhone().makeACall();
+        //smartPhoneComponent.getSmartPhone().makeACall();
+        // now we pass the instance to get smartPhone instance
+        smartPhoneComponent.inject(this);
+
+        smartPhone.makeACall();
 
     }
 }
