@@ -1,10 +1,12 @@
 package com.simplekjl.smartphone.parts;
 
-import javax.inject.Inject;
+/**
+ *
+ * We need to create a class in order to create a implementation of this interface,
+ * check class @NickelCadmiumBattery
+ */
 
-public class Battery {
+public interface Battery {
 
-    @Inject
-    public Battery() {
-    }
+    void showType();
 }

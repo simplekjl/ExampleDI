@@ -7,10 +7,9 @@ import com.simplekjl.smartphone.di.DaggerSmartPhoneComponent;
 import com.simplekjl.smartphone.di.SmartPhoneComponent;
 
 /**
- * How do we add dependencies that are out of our scope, let's say we can't go inside the class
- * and annotate the method with @Inject?
+ * how to provide a interface class as a dependency?
  *
- * For that we are going to create Modules
+ * Let's change our class battery to an interface to demonstrate this example
  *
  */
 
