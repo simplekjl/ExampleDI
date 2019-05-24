@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.simplekjl.smartphone.di.DaggerSmartPhoneComponent;
 import com.simplekjl.smartphone.di.SmartPhoneComponent;
+import com.simplekjl.smartphone.parts.Battery;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     SmartPhone smartPhone;
 
+    @Inject
+    Battery battery;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         smartPhoneComponent.inject(this);
 
         smartPhone.makeACall();
+        battery.showType();
 
     }
 }
