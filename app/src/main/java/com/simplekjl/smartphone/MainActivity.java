@@ -1,18 +1,18 @@
 package com.simplekjl.smartphone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
 import com.simplekjl.smartphone.parts.Battery;
 
 import javax.inject.Inject;
 
 /**
- * Using the concept of Application layer into our application
- * Since we are going to use the application everywhere it's a good practice to have it aside
+ * Let's show the case of singleton with DI
  *
- * Check:
- * Application class
- * Manifest android:name=".App"
  *
  */
 
@@ -35,6 +35,18 @@ public class MainActivity extends AppCompatActivity {
 
         smartPhone.makeACall();
         battery.showType();
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // To validate, check the logs and verify the timestamp in the creation object
+
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

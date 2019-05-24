@@ -6,6 +6,8 @@ import com.simplekjl.smartphone.MainActivity;
 import com.simplekjl.smartphone.SmartPhone;
 import com.simplekjl.smartphone.parts.batteries.NickelCadmiumBattery;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 /**
@@ -13,7 +15,7 @@ import dagger.Component;
  * achieve this.
  *
  */
-
+@Singleton
 @Component(modules = {MemoryCardModule.class, BatteriesModule.class})
 public interface SmartPhoneComponent {
 
