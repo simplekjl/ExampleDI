@@ -2,16 +2,18 @@ package com.simplekjl.smartphone;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
-import com.simplekjl.smartphone.di.DaggerSmartPhoneComponent;
-import com.simplekjl.smartphone.di.MemoryCardModule;
-import com.simplekjl.smartphone.di.SmartPhoneComponent;
 import com.simplekjl.smartphone.parts.Battery;
 
 import javax.inject.Inject;
 
 /**
- * Using field injection below
+ * Using the concept of Application layer into our application
+ * Since we are going to use the application everywhere it's a good practice to have it aside
+ *
+ * Check:
+ * Application class
+ * Manifest android:name=".App"
+ *
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -28,14 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //since at least one of our modules has a state, we need to pass the variables in here
-        SmartPhoneComponent smartPhoneComponent = DaggerSmartPhoneComponent.builder()
-                .memoryCardModule(new MemoryCardModule(100))
-                .build();
-
-        //smartPhoneComponent.getSmartPhone().makeACall();
-        // now we pass the instance to get smartPhone instance
-        smartPhoneComponent.inject(this);
+        // here we access the Application using the following lines
+        App.getApp().getSmartPhoneComponent().inject(this);
 
         smartPhone.makeACall();
         battery.showType();
